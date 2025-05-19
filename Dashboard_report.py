@@ -48,7 +48,7 @@ def get_daily_report():
         df.columns = df.columns.str.strip()
         return df.tail(1)  # Récupérer la dernière ligne du rapport
     except FileNotFoundError:
-        return pd.DataFrame(columns=["Min", "Max", "Ouverture", "Fermeture", "Volatilite"])
+        return pd.DataFrame(columns=["Min", "Max", "Ouverture", "Fermeture", "Volatilité"])
 
 # Initialisation de Dash
 app = dash.Dash(__name__)
