@@ -40,17 +40,17 @@ Une volatilité inhabituelle peut être un indicateur de **changements majeurs d
 
 La formule utilisée est celle du **rendement logarithmique**, qui permet de calculer la variation relative du prix d’un actif entre deux instants successifs. Elle est définie comme :
 
-\[
+
 R_t = ln(P_t / P_t-1)
-\]
+
 
 où \( R_t \) est le rendement au temps \( t \), \( P_t \) est le prix actuel et \( P_{t-1} \) est le prix précédent.
 
 L’intérêt de cette formule est qu’elle **rend les variations de prix indépendantes du niveau de l’actif**, ce qui facilite l’analyse statistique et financière. Ensuite, la **volatilité journalière** est obtenue en calculant l'écart-type des rendements logarithmiques :
 
-\[
-\sigma = std(R_t) * 100
-\]
+
+sigma = std(R_t) * 100
+
 
 Cette mesure permet d’évaluer **le niveau de risque** d’un actif : une volatilité élevée signifie des fluctuations importantes, tandis qu’une volatilité faible indique une stabilité relative.  
 
