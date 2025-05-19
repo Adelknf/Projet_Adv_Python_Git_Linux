@@ -20,5 +20,4 @@ fi
 # Ajouter la nouvelle entrée
 echo "$TIME; $PRICE" >> "$CSV_FILE"
 
-done
 
