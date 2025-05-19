@@ -22,7 +22,5 @@ while true; do
 
     echo "Données enregistrées à $TIME: €$PRICE"
 
-    # Attendre 5 minutes avant la prochaine requête
-    sleep 300
 done
 
