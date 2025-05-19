@@ -48,7 +48,7 @@ def get_daily_report():
         max_price = df.iloc[-1]["Max"]
         opening_price = df.iloc[-1]["Ouverture"]
         closing_price = df.iloc[-1]["Fermeture"]
-        volatility = df.iloc[-1]["Volatilité"]
+        volatility = df.iloc[-1]["Volatilite"]
 
         report_text = f"""
         📌 **Prix d'ouverture** : €{opening_price}
