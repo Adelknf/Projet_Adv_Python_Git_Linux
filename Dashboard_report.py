@@ -22,6 +22,10 @@ def get_last_price():
     """Récupère la dernière valeur du prix depuis le fichier CSV."""
     try:
         df = pd.read_csv(CSV_FILE, sep=";")
+        
+        # Supprimer les espaces inutiles dans les noms de colonnes
+        df.columns = df.columns.str.strip()
+        
         last_price = df.iloc[-1]["Prix (Euro)"]  # Dernière ligne
         return f"Prix actuel : €{last_price}"
     except FileNotFoundError:
