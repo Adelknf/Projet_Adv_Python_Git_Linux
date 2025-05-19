@@ -15,7 +15,7 @@ import datetime
 # Fichiers CSV
 CSV_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/prix_societe_generale.csv"
 DAILY_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_jour.csv"
-HISTORICAL_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_historiques.csv"
+HISTORICAL_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/prix_societe_generale.csv"
 REPORT_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/rapport.csv"
 
 def get_last_price():
