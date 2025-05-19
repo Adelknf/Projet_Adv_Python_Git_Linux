@@ -13,10 +13,10 @@ from dash.dependencies import Input, Output
 import datetime
 
 # Fichiers CSV
-CSV_FILE = "/content/prix_societe_generale.csv"
-DAILY_FILE = "/content/donnees_jour.csv"
-HISTORICAL_FILE = "/content/donnees_historiques.csv"
-REPORT_FILE = "/content/rapport.csv"
+CSV_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/prix_societe_generale.csv"
+DAILY_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_jour.csv"
+HISTORICAL_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_historiques.csv"
+REPORT_FILE = "/home/ubuntu/Projet_Adv_Python_Git_Linux/rapport.csv"
 
 def get_last_price():
     """Récupère la dernière valeur du prix depuis le fichier CSV."""
