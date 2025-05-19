@@ -1,26 +1,24 @@
 #!/bin/bash
 
 URL="https://www.google.com/finance/quote/GLE:EPA"
-CSV_FILE="prix_societe_generale.csv"
+CSV_FILE="/home/ubuntu/Projet_Adv_Python_Git_Linux/prix_societe_generale.csv"
 
-while true; do
-    DATA=$(curl -s "$URL")
 
-    # Extraction du prix
-    PRICE=$(echo "$DATA" | grep -oP '<div class="YMlKec fxKbKc">€[0-9,\.]+' | sed 's/<div class="YMlKec fxKbKc">//;s/\€//')
+DATA=$(curl -s "$URL")
 
-    # Récupération de l'heure actuelle avec timezone Paris
-    TIME=$(date +"%Y-%m-%d %H:%M:%S")
+# Extraction du prix
+PRICE=$(echo "$DATA" | grep -oP '<div class="YMlKec fxKbKc">€[0-9,\.]+' | sed 's/<div class="YMlKec fxKbKc">//;s/\€//')
 
-    # Vérifier si le fichier existe, sinon ajouter l'en-tête
-    if [ ! -f "$CSV_FILE" ]; then
-        echo "Heure (Europe/Paris); Prix (Euro)" > "$CSV_FILE"
-    fi
+# Récupération de l'heure actuelle avec timezone Paris
+TIME=$(date +"%Y-%m-%d %H:%M:%S")
 
-    # Ajouter la nouvelle entrée
-    echo "$TIME; $PRICE" >> "$CSV_FILE"
+# Vérifier si le fichier existe, sinon ajouter l'en-tête
+if [ ! -f "$CSV_FILE" ]; then
+    echo "Heure (Europe/Paris); Prix (Euro)" > "$CSV_FILE"
+fi
 
-    echo "Données enregistrées à $TIME: €$PRICE"
+# Ajouter la nouvelle entrée
+echo "$TIME; $PRICE" >> "$CSV_FILE"
 
 done
 
