@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 
 # Chargement des données journalières
-daily_file = "donnees_jour.csv"
-rapport_file = "rapport.csv"
+daily_file = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_jour.csv"
+rapport_file = "/home/ubuntu/Projet_Adv_Python_Git_Linux/rapport.csv"
 
 # Lecture des données
 df = pd.read_csv(daily_file, sep=";")
