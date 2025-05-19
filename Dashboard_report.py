@@ -44,22 +44,10 @@ def get_daily_report():
     """Charge et affiche les statistiques du rapport quotidien."""
     try:
         df = pd.read_csv(REPORT_FILE, sep=";")
-        min_price = df.iloc[-1]["Min"]
-        max_price = df.iloc[-1]["Max"]
-        opening_price = df.iloc[-1]["Ouverture"]
-        closing_price = df.iloc[-1]["Fermeture"]
-        volatility = df.iloc[-1]["Volatilite"]
-
-        report_text = f"""
-        📌 **Prix d'ouverture** : €{opening_price}
-        📌 **Prix de fermeture** : €{closing_price}
-        📌 **Minimum du jour** : €{min_price}
-        📌 **Maximum du jour** : €{max_price}
-        📌 **Volatilité** : {volatility}%
-        """
-        return report_text
+        df.columns = df.columns.str.strip()
+        return df.tail(1)  # Récupérer la dernière ligne du rapport
     except FileNotFoundError:
-        return "⚠️ Rapport non disponible."
+        return pd.DataFrame(columns=["Min", "Max", "Ouverture", "Fermeture", "Volatilite"])
 
 # Initialisation de Dash
 app = dash.Dash(__name__)
@@ -77,7 +65,12 @@ app.layout = html.Div([
     dcc.Graph(id="historical-chart"),  # Graphique historique
     
     html.H4("📑 Rapport quotidien"),
-    html.Div(id="daily-report", style={"textAlign": "center", "fontSize": "18px", "color": "black"}),  
+    dash_table.DataTable(
+        id="daily-report",
+        columns=[{"name": col, "id": col} for col in ["Min", "Max", "Ouverture", "Fermeture", "Volatilité"]],
+        style_table={"margin": "auto", "width": "50%"},
+        style_cell={"textAlign": "center", "padding": "10px", "fontSize": "18px"},
+    ),
     
     dcc.Interval(id="update-interval", interval=5000, n_intervals=0)  # Mise à jour automatique
 ])
@@ -86,7 +79,7 @@ app.layout = html.Div([
     Output("last-price", "children"),
     Output("daily-chart", "figure"),
     Output("historical-chart", "figure"),
-    Output("daily-report", "children"),
+    Output("daily-report", "data"),
     Input("update-interval", "n_intervals")
 )
 def update_dashboard(_):
@@ -94,12 +87,12 @@ def update_dashboard(_):
     last_price_text = get_last_price()
     df_daily = load_csv(DAILY_FILE)
     df_historical = load_csv(HISTORICAL_FILE)
-    report_text = get_daily_report()
+    df_report = get_daily_report()
     
     fig_daily = px.line(df_daily, x="Heure", y=" Prix (Euro)", title="Prix du jour")
     fig_historical = px.line(df_historical, x="Heure", y=" Prix (Euro)", title="Prix historique")
 
-    return last_price_text, fig_daily, fig_historical, report_text
+    return last_price_text, fig_daily, fig_historical, df_report.to_dict("records")
 
 # Exécution du serveur
 if __name__ == "__main__":
