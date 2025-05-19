@@ -1,7 +1,5 @@
 # Projet_Adv_Python_Git_Linux
 
-Bien sûr ! Voici une explication détaillée du projet et de l’intérêt du calcul de la volatilité de l’actif de la Société Générale.
-
 ---
 
 ## **Projet : Analyse et Suivi du Prix de l’Actif de la Société Générale**  
