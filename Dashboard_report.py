@@ -48,7 +48,7 @@ def get_daily_report():
         df.columns = df.columns.str.strip()
         return df.tail(1)  # Récupérer la dernière ligne du rapport
     except FileNotFoundError:
-        return pd.DataFrame(columns=["Min", "Max", "Ouverture", "Fermeture", "Volatilité"])
+        return pd.DataFrame(columns=["Min", "Max", "Ouverture", "Fermeture", "Volatilite"])
 
 # Initialisation de Dash
 app = dash.Dash(__name__)
@@ -68,7 +68,7 @@ app.layout = html.Div([
     html.H4("📑 Rapport quotidien"),
     dash_table.DataTable(
         id="daily-report",
-        columns=[{"name": col, "id": col} for col in ["Min", "Max", "Ouverture", "Fermeture", "Volatilité"]],
+        columns=[{"name": col, "id": col} for col in ["Min", "Max", "Ouverture", "Fermeture", "Volatilite"]],
         style_table={"margin": "auto", "width": "50%"},
         style_cell={"textAlign": "center", "padding": "10px", "fontSize": "18px"},
     ),
