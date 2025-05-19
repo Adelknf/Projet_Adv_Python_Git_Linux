@@ -96,8 +96,8 @@ def update_dashboard(_):
     df_historical = load_csv(HISTORICAL_FILE)
     report_text = get_daily_report()
     
-    fig_daily = px.line(df_daily, x="Heure", y="Prix (Euro)", title="Prix du jour")
-    fig_historical = px.line(df_historical, x="Heure", y="Prix (Euro)", title="Prix historique")
+    fig_daily = px.line(df_daily, x="Heure", y=" Prix (Euro)", title="Prix du jour")
+    fig_historical = px.line(df_historical, x="Heure", y=" Prix (Euro)", title="Prix historique")
 
     return last_price_text, fig_daily, fig_historical, report_text
 
