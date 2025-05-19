@@ -7,8 +7,8 @@ Created on Sat Apr  5 12:17:31 2025
 import pandas as pd
 import datetime
 
-historical_file = "donnees_historiques.csv"
-daily_file = "donnees_jour.csv"
+historical_file = "/home/ubuntu/Projet_Adv_Python_Git_Linux/prix_societe_generale.csv"
+daily_file = "/home/ubuntu/Projet_Adv_Python_Git_Linux/donnees_jour.csv"
 
 # Lecture du fichier avec le bon séparateur
 df = pd.read_csv(historical_file, sep=";")
