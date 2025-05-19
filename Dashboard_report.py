@@ -7,6 +7,7 @@ Created on Sun Apr  6 23:07:19 2025
 
 import pandas as pd
 import dash
+import dash_table
 from dash import dcc, html
 import plotly.express as px
 from dash.dependencies import Input, Output
